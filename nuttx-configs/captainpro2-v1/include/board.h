@@ -165,8 +165,8 @@
 #define GPIO_USART3_RX	GPIO_USART2_RX_1
 #define GPIO_USART3_TX	GPIO_USART2_TX_1
 
-#define GPIO_USART4_RX	GPIO_USART6_RX_2
-#define GPIO_USART4_TX	GPIO_USART6_TX_2
+#define GPIO_UART4_RX	GPIO_UART4_RX_2
+#define GPIO_UART4_TX	GPIO_UART4_TX_2
 
 /*
  * I2C
@@ -189,6 +189,8 @@
 #define GPIO_SPI2_MOSI	GPIO_SPI2_MOSI_1
 #define GPIO_SPI2_SCK	GPIO_SPI2_SCK_2
 
+#define DMACHAN_SPI2_RX	DMAMAP_SPI2_RX
+#define DMACHAN_SPI2_TX	DMAMAP_SPI2_TX
 
 /************************************************************************************
  * Public Data
