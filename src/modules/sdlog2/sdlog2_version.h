@@ -59,4 +59,8 @@
 #define	HW_ARCH "PX4FMU_V2"
 #endif
 
+#ifdef CONFIG_ARCH_BOARD_CAP2_V1
+#define	HW_ARCH "CAP2_V1"
+#endif
+
 #endif /* SDLOG2_VERSION_H_ */
