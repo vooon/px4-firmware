@@ -113,6 +113,9 @@ private:
 #if defined(CONFIG_ARCH_BOARD_PX4FMU_V2)
 	static const unsigned _max_actuators = 6;
 #endif
+#if defined(CONFIG_ARCH_BOARD_CAP2_V1)
+	static const unsigned _max_actuators = 8;
+#endif
 
 	Mode		_mode;
 	unsigned	_pwm_default_rate;
@@ -196,6 +199,14 @@ const PX4FMU::GPIOConfig PX4FMU::_gpio_tab[] = {
 	{GPIO_VDD_SERVO_VALID,   0,                       0},
 	{GPIO_VDD_5V_HIPOWER_OC, 0,                       0},
 	{GPIO_VDD_5V_PERIPH_OC,  0,                       0},
+#endif
+#if defined(CONFIG_ARCH_BOARD_CAP2_V1)
+	{GPIO_GPIO0_INPUT,       GPIO_GPIO0_OUTPUT,       0},
+	{GPIO_GPIO1_INPUT,       GPIO_GPIO1_OUTPUT,       0},
+	{GPIO_GPIO2_INPUT,       GPIO_GPIO2_OUTPUT,       0},
+	{GPIO_GPIO3_INPUT,       GPIO_GPIO3_OUTPUT,       0},
+	{GPIO_GPIO4_INPUT,       GPIO_GPIO4_OUTPUT,       0},
+	{GPIO_GPIO5_INPUT,       GPIO_GPIO5_OUTPUT,       0},
 #endif
 };
 
@@ -1225,6 +1236,9 @@ fmu_new_mode(PortMode new_mode)
 #if defined(CONFIG_ARCH_BOARD_PX4FMU_V2)
 		servo_mode = PX4FMU::MODE_6PWM;
 #endif
+#if defined(CONFIG_ARCH_BOARD_CAP2_V1)
+		servo_mode = PX4FMU::MODE_6PWM; // XXX: Should be 8 ch
+#endif
 		break;
 
 	/* mixed modes supported on v1 board only */
@@ -1492,7 +1506,7 @@ fmu_main(int argc, char *argv[])
 	fprintf(stderr, "FMU: unrecognised command, try:\n");
 #if defined(CONFIG_ARCH_BOARD_PX4FMU_V1)
 	fprintf(stderr, "  mode_gpio, mode_serial, mode_pwm, mode_gpio_serial, mode_pwm_serial, mode_pwm_gpio, test\n");
-#elif defined(CONFIG_ARCH_BOARD_PX4FMU_V2)
+#elif defined(CONFIG_ARCH_BOARD_PX4FMU_V2) || defined(CONFIG_ARCH_BOARD_CAP2_V1)
 	fprintf(stderr, "  mode_gpio, mode_pwm, test\n");
 #endif
 	exit(1);
