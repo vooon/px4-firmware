@@ -183,11 +183,11 @@ __EXPORT int nsh_archinitialize(void)
 	ts.tv_sec = 0;
 	ts.tv_nsec = 1000000;
 
-	hrt_call_every(&serial_dma_call,
-		       ts_to_abstime(&ts),
-		       ts_to_abstime(&ts),
-		       (hrt_callout)stm32_serial_dma_poll,
-		       NULL);
+	//hrt_call_every(&serial_dma_call,
+	//	       ts_to_abstime(&ts),
+	//	       ts_to_abstime(&ts),
+	//	       (hrt_callout)stm32_serial_dma_poll,
+	//	       NULL);
 
 	/* initial LED state */
 	drv_led_start();
