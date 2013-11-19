@@ -164,12 +164,6 @@ __EXPORT int nsh_archinitialize(void)
 	stm32_configgpio(GPIO_ADC1_IN9);
 	/* IN12 and IN13 further below */
 
-	led_init();
-	led_on(0);
-	led_off(1);
-	led_on(2);
-	while(1);
-
 	/* configure the high-resolution time/callout interface */
 	hrt_init();
 
